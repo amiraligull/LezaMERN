@@ -11,10 +11,10 @@ connect();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({ msg: "Welcome to chawkbazar !!" });
+  res.json({ msg: "Welcome to LezaMERN !!" });
 });
 
-// user Routes
+// user Routes middelware
 app.use(userRoutes);
 const port = env.PORT || 5000;
 app.listen(port, () => {

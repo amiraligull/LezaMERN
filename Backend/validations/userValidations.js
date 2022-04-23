@@ -8,5 +8,5 @@ module.exports.registerValidator = [
     .trim()
     .isLength({ min: 5 })
     .escape()
-    .withMessage("password must be minimum 5 characters"),
+    .withMessage("password should be 5 characters"),
 ];
