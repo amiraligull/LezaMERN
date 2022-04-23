@@ -1,0 +1,12 @@
+/** @format */
+
+const { body } = require("express-validator");
+module.exports.registerValidator = [
+  body("name").not().trim().isEmpty().escape().withMessage("name is required"),
+  body("email").isEmail().trim().escape().withMessage("Email is required"),
+  body("password")
+    .trim()
+    .isLength({ min: 5 })
+    .escape()
+    .withMessage("password must be minimum 5 characters"),
+];
