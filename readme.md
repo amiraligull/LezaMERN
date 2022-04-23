@@ -7,5 +7,6 @@
 3= nodemon installed
 4=mongooes installed
 4= password bcryt packge installed
+5= npm i jsonwebtoken is installed
 
 <!-- front end packges  -->
