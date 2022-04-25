@@ -10,3 +10,9 @@ module.exports.registerValidator = [
     .escape()
     .withMessage("password should be 5 characters"),
 ];
+
+// login validatoin
+module.exports.loginValidator = [
+  body("email").isEmail().trim().escape().withMessage("Email is required"),
+  body("password").not().isEmpty().escape().withMessage("password Required"),
+];

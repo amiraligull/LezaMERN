@@ -2,7 +2,11 @@
 
 const { validationResult } = require("express-validator");
 const UserModel = require("../../models/User");
-const { hashPassword, createToken } = require("../../Services/authService");
+const {
+  hashPassword,
+  createToken,
+  comparePassword,
+} = require("../../Services/authService");
 
 //Route post/ api/ controller->register controller
 // access public
@@ -43,5 +47,42 @@ module.exports.registerController = async (req, res) => {
     }
   } else {
     return res.status(400).json({ errors: errors.array() });
+  }
+};
+
+// ============================================================
+// login apis given blow
+//Route login/ api/ controller->login functino
+// access public
+//@desc login a user and Return a Token
+module.exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    try {
+      const user = await UserModel.findOne({ email: email });
+      if (user) {
+        if (await comparePassword(password, user.password)) {
+          const token = createToken({ id: user._id, name: user.name });
+          if (user.admin) {
+            return res.status(201).json({ token, admin: true });
+          } else {
+            return res.status(201).json({ token, admin: false });
+          }
+        } else {
+          res
+            .status(401)
+            .json({ errors: [{ msg: "password is not matched" }] });
+        }
+      } else {
+        return res.status(401).json(`${email} is not found`);
+      }
+    } catch (error) {
+      console.log(error.message);
+      return res.status(500).json("server internal error");
+    }
+  } else {
+    // validation errors
+    return res.status(401).json({ errors: errors.array() });
   }
 };
