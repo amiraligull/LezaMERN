@@ -8,5 +8,6 @@
 4=mongooes installed
 4= password bcryt packge installed
 5= npm i jsonwebtoken is installed
+6=react app is Created
 
 <!-- front end packges  -->
