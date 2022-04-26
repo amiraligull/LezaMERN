@@ -8,5 +8,6 @@
 4=mongooes installed
 4= password bcryt packge installed
 5= npm i jsonwebtoken is installed
+= installing concurant packge to connect the backend and front-end or combine both as a single script
 
 <!-- front end packges  -->
