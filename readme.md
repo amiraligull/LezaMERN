@@ -13,4 +13,6 @@
 <!-- front end packges  -->
 
 6=react app is Created
+= react router-dome is installed
 7=taildwind css added
+= "npx tailwindcss init --full" this command will create your config tailwindcss file with all default properts what you will need.
